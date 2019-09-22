@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace InterviewPreparation.DataStructures
 {
-    class Queue<T>
+    class CustomQueue<T>
     {
         public GenericNode<T> head;
         public GenericNode<T> tail;
 
         public int count;
 
-        public Queue()
+        public CustomQueue()
         {
             this.head = null;
             this.tail = null;
@@ -39,14 +39,11 @@ namespace InterviewPreparation.DataStructures
 
         public GenericNode<T> dequeue()
         {
-            //GenericNode<T> node = this.head;
             if (this.head != null)
             {
                 this.head = this.head.next;
-                //node.next = null;
                 this.count--;
             }
-
             return this.head;
         }
     }

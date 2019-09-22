@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -50,19 +52,23 @@
     <Compile Include="DataStructures\BinarySearchTree.cs" />
     <Compile Include="DataStructures\BinaryTree.cs" />
     <Compile Include="DataStructures\BinaryTreeV0.cs" />
+    <Compile Include="DataStructures\BTree.cs" />
     <Compile Include="DataStructures\GenericNode.cs" />
     <Compile Include="DataStructures\Graph.cs" />
     <Compile Include="DataStructures\LinkedList_Shri.cs" />
     <Compile Include="DataStructures\LinkedList.cs" />
     <Compile Include="DataStructures\MyLinkedList.cs" />
     <Compile Include="DataStructures\NodeWithMin.cs" />
-    <Compile Include="DataStructures\Queue.cs" />
+    <Compile Include="DataStructures\ArrayQueue.cs" />
+    <Compile Include="DataStructures\CustomQueue.cs" />
     <Compile Include="DataStructures\SetOfStacks.cs" />
     <Compile Include="DataStructures\Stack.cs" />
     <Compile Include="DataStructures\StackWithMin.cs" />
+    <Compile Include="DataStructures\Stack_Gereric.cs" />
     <Compile Include="DataStructures\TreeNode.cs" />
     <Compile Include="DataStructures\Trie.cs" />
     <Compile Include="DynamicProgramming\DynamicProgramming.cs" />
+    <Compile Include="FixedSizeGenericHashTable2.cs" />
     <Compile Include="FixedSizeGenericHashTable.cs" />
     <Compile Include="Problems\AncestorsOfNodeInTree.cs" />
     <Compile Include="Problems\BinaryTreeInt.cs" />

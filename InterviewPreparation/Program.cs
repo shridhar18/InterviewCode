@@ -13,15 +13,52 @@ namespace InterviewPreparation
 {
     class Program
     {
-
-
         static void Main(string[] args)
         {
+            Tree theTree = new Tree();
+            theTree.InsertByRec(20);
+            theTree.InsertByRec(25);
+            theTree.InsertByRec(45);
+            theTree.InsertByRec(15);
+            theTree.InsertByRec(67);
+            theTree.InsertByRec(43);
+            theTree.InsertByRec(16);
+            theTree.InsertByRec(80);
+            theTree.InsertByRec(33);
+            theTree.InsertByRec(67);
+            theTree.Insert(19);
+            theTree.Insert(9);
+            theTree.Insert(99);
+            theTree.Insert(91);
+            theTree.Insert(23);
+            theTree.Insert(14);
+            theTree.InsertByRec(17);
+            Console.WriteLine("Inorder Traversal : ");
+            theTree.Inorder(theTree.root);
+            Console.WriteLine(" ");
+            Console.WriteLine();
+            Console.WriteLine("Preorder Traversal : ");
+            theTree.Preorder(theTree.root);
+            Console.WriteLine(" ");
+            Console.WriteLine();
+            Console.WriteLine("Postorder Traversal : ");
+            theTree.Postorder(theTree.root);
+            Console.WriteLine(" ");
+            Console.ReadLine();
 
-            TestHash hash = new TestHash();
-            hash.GetTestHash();
+            CustomQueue<int> st = new CustomQueue<int>();
+            st.enqueue(1);
+            st.enqueue(2);
+            st.enqueue(3);
+            st.enqueue(4); 
+            st.enqueue(5);
+            st.enqueue(6);
+            st.dequeue();
 
-            var sss= arr.StringProblems.FindSubstringIndex("Shrisar prasad", "s!a");
+            //st.POP();
+           // st.POPAT(4);
+
+            var sss = arr.StringProblems.FindSubstringIndex("Shrisar prasad", "s!a");
 
             BinaryTreeV0<int> bTree = new BinaryTreeV0<int>(10);
             bTree.Insert(12);
@@ -46,32 +83,46 @@ namespace InterviewPreparation
             bTree.walkTree();
 
             var sssssss33 = arr.DynamicProgramming.LongestPalindromeSubstringEasy("BBABCBCAB");
-            LinkedList_New node1 = new LinkedList_New();
-            var scc1 = node1.nodeCount();
-            node1.append(new Node(100));
-            node1.append(1);
 
-            node1.append(3);
-            scc1 = node1.nodeCount();
-            //node1.delete(10);
-            node1.append(1);
-            node1.append(2);
-            node1.deleteNode(node1.FindNthToLastElement(node1.head, 2));
-            scc1 = node1.nodeCount();
-            node1.delete(4);
-            node1.delete(1);
-            scc1 = node1.nodeCount();
-            node1.append(20);
-            scc1 = node1.nodeCount();
+            BinaryTree<int> btree = new BinaryTree<int>();
+            btree.Insert(1);
+            btree.Insert(20);
+            btree.Insert(30);
+            btree.Insert(4);
+            btree.Insert(5);
+            btree.Insert(6);
+            btree.Insert(7);
+            btree.Insert(80);
+            btree.Insert(9);
+            btree.Insert(10);
+            btree.Insert(11);
+
+            LinkedList_New node1 = new LinkedList_New();
+            //var scc1 = node1.nodeCount();
+            //node1.append(new Node(100));
+            //node1.append(1);
+
+            //node1.append(3);
+            //scc1 = node1.nodeCount();
+            ////node1.delete(10);
+            //node1.append(1);
+            //node1.append(2);
+            //node1.deleteNode(node1.FindNthToLastElement(node1.head, 2));
+            //scc1 = node1.nodeCount();
+            //node1.delete(4);
+            //node1.delete(1);
+            //scc1 = node1.nodeCount();
+            //node1.append(20);
+            //scc1 = node1.nodeCount();
+            ////node1.remove_duplicates();
+            //node1.append(11);
+            //node1.append(2);
+            //node1.append(12);
+            //node1.append(4);
+            //node1.append(4);
+            //scc1 = node1.nodeCount();
             //node1.remove_duplicates();
-            node1.append(11);
-            node1.append(2);
-            node1.append(12);
-            node1.append(4);
-            node1.append(4);
-            scc1 = node1.nodeCount();
-            node1.remove_duplicates();
-            scc1 = node1.nodeCount();
+            //scc1 = node1.nodeCount();
 
             var noder1= node1.FindNthToLastElement(node1.head, 4);
 

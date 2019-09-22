@@ -11,6 +11,14 @@ namespace InterviewPreparation.DataStructures
     {
         public Node head;
         public Node head2;
+        public int Count;
+
+        public LinkedList_New()
+        {
+            this.head = null;
+            this.head2 = null;
+            this.Count = 0;
+        }
 
         public void append(int data)
         {
@@ -30,6 +38,19 @@ namespace InterviewPreparation.DataStructures
         }
         public void append(Node node)
         {
+            //if (this.head == null)
+            //{
+            //    this.head = node;
+            //    this.head2 = node;
+            //    this.Count++;
+            //}
+            //else
+            //{
+            //    this.head2.Next = node;
+            //    this.head2 = node;
+            //    this.Count++;
+            //}
+
             if (head == null) { head = node; return; }
             Node cuurent = head;
             while (cuurent.Next != null)
@@ -45,6 +66,26 @@ namespace InterviewPreparation.DataStructures
             Node current = new Node(data); ;
             current.Next = head;
             head = current;
+        }
+
+        /// <summary>
+        /// Deletes last node
+        /// </summary>
+        public void deleteLast()
+        {
+            Node current = head;
+            if (current != null && current.Next == null)
+            {
+                head = null;
+                Count--;
+                return;
+            }
+            while (current != null && current.Next.Next != null)
+            {
+                current = current.Next;
+            }
+            current.Next = current.Next.Next;
+            Count--;
         }
 
         public void delete(int data)
@@ -95,75 +136,164 @@ namespace InterviewPreparation.DataStructures
             return count;
         }
 
-        internal virtual void remove_duplicates()
+        public void remove(Node n)
         {
-            //O(N2)//Remove without memory
-            //Node nd1 = null, nd2 = null;
-            //nd1 = head;
-            //while (nd1 != null && nd1.Next !=null)
-            //{
-            //    nd2 = nd1;
-            //    while (nd2 != null && nd2.Next != null)
-            //    {
-            //        if (nd1.Data == nd2.Next.Data)
-            //        {
-            //            nd2.Next = nd2.Next.Next;
-            //        }
-            //        else
-            //        {
-            //            nd2 = nd2.Next;
-            //        }
-            //    }
-            //    nd1 = nd1.Next;
-            //}
-            //O(N)//Remove with memory
+            if (head == null) return;
+            if (head.Value == n.Value)
+            {
+                //very first node
+                head = head.Next;
+                this.Count--;
+                return;
+            }
 
             Node current = head;
-            Node pre = null;
-            Hashtable hs = new Hashtable();
-
-            while (current != null)
+            while (current.Next != null)
             {
-                if (hs.ContainsKey(current.Value))
+                if (n.Value == current.Next.Value)
                 {
-                    pre.Next = current.Next;
-                }
-                else
-                {
-                    hs.Add(current.Value, current.Value);
-                    pre = current;
-
+                    current.Next = current.Next.Next;
+                    this.Count--;
+                    return;
                 }
                 current = current.Next;
             }
+        }
+
+        public void DeleteNthNode(int n)
+        {
+            if (head == null || n == 0) return;
+
+            int count = 1;
+            Node curent = head;
+            if (n == 1)
+            {
+                head = curent.Next;
+                return;
+            }
+
+            while (curent.Next != null)
+            {
+                if (n-1 == count)
+                {
+                    curent.Next = curent.Next.Next;
+                    return;
+                }
+                count++;
+                curent = curent.Next;
+            }
+        }
+
+        internal virtual void remove_duplicates()
+        {
+            //O(N2)//Remove without memory
+            Node nd1 = head, nd2 = null;
+            while (nd1 != null && nd1.Next != null)
+            {
+                nd2 = nd1;
+                while (nd2 != null && nd2.Next != null)
+                {
+                    if (nd1.Value == nd2.Next.Value)
+                    {
+                        nd2.Next = nd2.Next.Next;
+                    }
+                    else
+                    {
+                        nd2 = nd2.Next;
+                    }
+                }
+                nd1 = nd1.Next;
+            }
+            //O(N)//Remove with memory
+
+            ////OR -> Above solution is quicker
+            //Node current = head;
+            //Node pre = null;
+            //Hashtable hs = new Hashtable();
+
+            //while (current != null)
+            //{
+            //    if (hs.ContainsKey(current.Value))
+            //    {
+            //        pre.Next = current.Next;
+            //    }
+            //    else
+            //    {
+            //        hs.Add(current.Value, current.Value);
+            //        pre = current;
+            //    }
+            //    current = current.Next;
+            //}
         }
 
         public Node FindNthToLastElement(Node node, int n)
         {
             //Implement an algorithm to find the nth to last element of a singly linked list 
             Node current = head;
-            Node follower = head;
-            if (current == null || current.Next == null) return current;
+            Node follower =head2;
+            //if (current == null || current.Next == null) return current;
 
-            //NthtoLast
-            for (int i = 0; i < n; i++)
+            if (this.nodeCount() == n) return current;
+            //if (n > this.nodeCount()) return Exception;
+            int counter = 1;
+            //From Nth to last
+            while (current != null)
             {
-                if (current.Next != null)
+                if (counter == n)
                 {
-                    current = current.Next;
+                    head = current;
+                    return head;
                 }
-                else if (current == null) return null;
+                current = current.Next;
+                counter++;
             }
-            //NthfromLast
-            follower = head;
-            int n2 = this.nodeCount();
-            for (int i = 0; i < n2 - n; i++)
+            counter = 0;
+            //After Nth to last
+            while (current != null)
             {
-                if (follower.Next != null) follower = current.Next;
-                else if (follower == null) return null;
+                if (counter == n)
+                {
+                    head = current;
+                    return head;
+                }
+                current = current.Next;
+                counter++;
             }
 
-            return follower;
+            //from n to end th (otherway of doing)
+            counter = 1;
+            while (current.Next != null &&  counter < n)
+            {
+                current = current.Next;
+                counter++;
+            }
+
+            //0 to n elemnt
+            int ccc = 0;
+            while (current.Next != null && ccc < n)
+            {
+                if (head2 == null)
+                {
+                    head2 = new Node(current.Value);
+                    follower = head2;
+                }
+                else
+                {
+                    while (follower.Next != null)
+                    {
+                        //Append
+                        follower = follower.Next;
+                    }
+                    follower.Next = new Node(current.Value);
+                    //follower = new Node(current.Value);
+                    //follower.Next = head2; //prepend
+                    //head2 = follower;
+                }
+                ccc++;
+                current = current.Next;
+            }
+
+            return current;
         }
 
         public bool deleteNode(Node n)
@@ -239,6 +369,7 @@ namespace InterviewPreparation.DataStructures
             head2.Next.Next.Next.Next = new Node(11);
             head2.Next.Next.Next.Next.Next = new Node(6);
 
+            //merging head2 with head
             while (head2 != null)
             {
                 Node nd = new Node(head2.Value);
