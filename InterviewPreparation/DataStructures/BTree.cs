@@ -16,6 +16,10 @@ namespace InterviewPreparation.DataStructures
         {
             this.item = data;
         }
+        public TNode()
+        {
+        }
+
         public void display()
         {
             Console.Write("[");
@@ -37,33 +41,63 @@ namespace InterviewPreparation.DataStructures
                 root = newTNode;
             else
             {
-                TNode current = root;
-                TNode parent;
+                //trail(root, new TNode(id));
                 while (true)
                 {
-                    parent = current;
-                    if (id < current.item)
+                    TNode current = root;
+                    TNode parent;
+                    while (true)
                     {
-                        current = current.leftc;
-                        if (current == null)
+                        parent = current;
+                        if (id < current.item)
                         {
-                            parent.leftc = newTNode;
-                            return;
+                            current = current.leftc;
+                            if (current == null)
+                            {
+                                parent.leftc = newTNode;
+                                return;
+                            }
                         }
-                    }
-                    else
-                    {
-                        current = current.rightc;
-                        if (current == null)
+                        else
                         {
-                            parent.rightc = newTNode;
-                            return;
+                            current = current.rightc;
+                            if (current == null)
+                            {
+                                parent.rightc = newTNode;
+                                return;
+                            }
                         }
                     }
                 }
             }
         }
 
+        private void trail(TNode root, TNode newTNode)
+        {
+            while (true)
+            {
+                if (newTNode.item < root.item)
+                {
+                    if (root.leftc == null)
+                    {
+                        root.leftc = newTNode;
+                        return;
+                    }
+                    else
+                        root = root.leftc;
+                }
+                else
+                {
+                    if (root.rightc == null)
+                    {
+                        root.rightc = newTNode;
+                        return;
+                    }
+                    else
+                        root = root.rightc;
+                }
+            }
+        }
         //OR By recusive method way.
         public void InsertByRec(int id)
         {
@@ -74,7 +108,11 @@ namespace InterviewPreparation.DataStructures
                 return;
             }
             // 2. Otherwise, recur down the tree 
-            InsertTRec(root, new TNode(id));
+            //InsertTRec(root, new TNode(id));
+            //OR 2. Otherwise, recur down the tree 
+            TNode newNode = new TNode();
+            newNode.item = id;
+            InsertTRec(root, newNode);
         }
 
         private void InsertTRec(TNode root, TNode newTNode)

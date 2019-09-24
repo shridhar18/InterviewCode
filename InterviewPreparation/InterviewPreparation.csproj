@@ -52,6 +52,7 @@
     <Compile Include="DataStructures\BinarySearchTree.cs" />
     <Compile Include="DataStructures\BinaryTree.cs" />
     <Compile Include="DataStructures\BinaryTreeV0.cs" />
+    <Compile Include="DataStructures\BTreeShri.cs" />
     <Compile Include="DataStructures\BTree.cs" />
     <Compile Include="DataStructures\GenericNode.cs" />
     <Compile Include="DataStructures\Graph.cs" />

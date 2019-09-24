@@ -15,24 +15,24 @@ namespace InterviewPreparation
     {
         static void Main(string[] args)
         {
-            Tree theTree = new Tree();
-            theTree.InsertByRec(20);
-            theTree.InsertByRec(25);
-            theTree.InsertByRec(45);
-            theTree.InsertByRec(15);
-            theTree.InsertByRec(67);
-            theTree.InsertByRec(43);
-            theTree.InsertByRec(16);
-            theTree.InsertByRec(80);
-            theTree.InsertByRec(33);
-            theTree.InsertByRec(67);
+            Tree_S theTree = new Tree_S();
+            theTree.Insert(20);
+            theTree.Insert(25);
+            theTree.Insert(45);
+            theTree.Insert(15);
+            theTree.Insert(67);
+            theTree.Insert(43);
+            theTree.Insert(16);
+            theTree.Insert(80);
+            theTree.Insert(33);
+            theTree.Insert(67);
             theTree.Insert(19);
             theTree.Insert(9);
             theTree.Insert(99);
             theTree.Insert(91);
             theTree.Insert(23);
             theTree.Insert(14);
-            theTree.InsertByRec(17);
+            theTree.Insert(17);
             Console.WriteLine("Inorder Traversal : ");
             theTree.Inorder(theTree.root);
             Console.WriteLine(" ");
